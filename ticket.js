@@ -10,14 +10,38 @@ for (let btn of priemBtns) {
         const addedTitalItem = document.getElementsByClassName("total_added_items")
 
         if (addedTitalItem.length === 4) {
+            const applyCuponBtn = document.getElementById("apply_cupon")
+            applyCuponBtn.addEventListener("click", function () {
+                const applyCupponText = document.getElementById("apply_cuppon_text").value
+                if (applyCupponText === "NEW15") {
+                    let grandTotalPriceText = document.getElementById("grand_total_price").innerText
+                    let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 15) / 100
+                    document.getElementById("grand_total_price").innerText = grandTotalPrice
+                    
+                }
+                else if (applyCupponText === "Couple 20") {
+                    let grandTotalPriceText = document.getElementById("grand_total_price").innerText
+                    let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 20) / 100
+                    document.getElementById("grand_total_price").innerText = grandTotalPrice
+                }
+                else {
+                    alert("plase type rigt cupon")
+                    return;
+                }
+            })
+
+
             alert("plase only for your 4 seats")
             return
+        }
+        else if (addedTitalItem.length >= 3) {
+            document.getElementById("apply_cupon").removeAttribute("disabled")
         }
         // start only 4 element selected
         let targetSeatText = event.target.innerText
         event.target.classList.add("bg-green-700")
         event.target.setAttribute("disabled", "text-red-700")
-        console.log(event.target)
+        // console.log(event.target)
 
         const totalSeatText = document.getElementById("total_seat").innerText
         const totalSeatNumber = parseInt(totalSeatText)

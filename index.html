@@ -295,7 +295,7 @@
                             <!-- append select items -->
                             <div id="select_items" class="border-b-2 border-dotted pb-2 border-gray-400">
                                 <div class="flex justify-between">
-                                    <p>Seat <span id="select_count" class="text-red-800 font-extrabold">0</span></p>
+                                    <p>Seat<sup id="select_count" class=" text-green-600 px-2 font-extrabold">0</sup></p>
                                     <p>Class</p>
                                     <p>Price</p>
                                 </div>
@@ -307,8 +307,8 @@
                             </div>
                             <!-- cupon -->
                             <div class="my-4">
-                                <input type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" />
-                                <button disabled  class="btn btn-primary">Apply</button>
+                                <input id="apply_cuppon_text" type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" />
+                                <button disabled id="apply_cupon" class="btn btn-primary">Apply</button>
                             </div>
                              <!--Grand total -->
                              <div  class="flex justify-between">
