@@ -8,7 +8,18 @@ for (let btn of priemBtns) {
         count2 += 550
         // start only 4 element selected
         const addedTitalItem = document.getElementsByClassName("total_added_items")
-
+    //   hidden bus ticket and show success
+        if (event.target.innerText == event.target.innerText) {
+            document.getElementById("next").removeAttribute("disabled")
+            document.getElementById("next").addEventListener("click",function(){
+                const success=document.getElementById("success")
+                success.classList.remove("hidden")
+                const bookingSection=document.getElementById("bookin_section")
+                bookingSection.classList.add("hidden")
+                console.log("click")
+            })
+        }
+        // coupon calculation
         if (addedTitalItem.length === 4) {
             const applyCuponBtn = document.getElementById("apply_cupon")
             applyCuponBtn.addEventListener("click", function () {
@@ -17,12 +28,17 @@ for (let btn of priemBtns) {
                     let grandTotalPriceText = document.getElementById("grand_total_price").innerText
                     let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 15) / 100
                     document.getElementById("grand_total_price").innerText = grandTotalPrice
-                    
+                    // hiden the cupon area
+                    const cuponArea = document.getElementById("cupon_area")
+                    cuponArea.classList.add("hidden")
                 }
                 else if (applyCupponText === "Couple 20") {
                     let grandTotalPriceText = document.getElementById("grand_total_price").innerText
                     let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 20) / 100
                     document.getElementById("grand_total_price").innerText = grandTotalPrice
+                    // hiden the cupon area
+                    const cuponArea = document.getElementById("cupon_area")
+                    cuponArea.classList.add("hidden")
                 }
                 else {
                     alert("plase type rigt cupon")
@@ -66,6 +82,7 @@ for (let btn of priemBtns) {
 
         selectedItems.appendChild(div)
         //end Selected seat added
+
 
 
 
