@@ -8,56 +8,23 @@ for (let btn of priemBtns) {
         count2 += 550
         // start only 4 element selected
         const addedTitalItem = document.getElementsByClassName("total_added_items")
-    //   hidden bus ticket and show success
-        if (event.target.innerText == event.target.innerText) {
-            document.getElementById("next").removeAttribute("disabled")
-            document.getElementById("next").addEventListener("click",function(){
-                const success=document.getElementById("success")
-                success.classList.remove("hidden")
-                const bookingSection=document.getElementById("bookin_section")
-                bookingSection.classList.add("hidden")
-                console.log("click")
-            })
-        }
+
+
         // coupon calculation
-        if (addedTitalItem.length === 4) {
+        if (count === 4) {
             const applyCuponBtn = document.getElementById("apply_cupon")
-            applyCuponBtn.addEventListener("click", function () {
-                const applyCupponText = document.getElementById("apply_cuppon_text").value
-                if (applyCupponText === "NEW15") {
-                    let grandTotalPriceText = document.getElementById("grand_total_price").innerText
-                    let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 15) / 100
-                    document.getElementById("grand_total_price").innerText = grandTotalPrice
-                    // hiden the cupon area
-                    const cuponArea = document.getElementById("cupon_area")
-                    cuponArea.classList.add("hidden")
-                }
-                else if (applyCupponText === "Couple 20") {
-                    let grandTotalPriceText = document.getElementById("grand_total_price").innerText
-                    let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 20) / 100
-                    document.getElementById("grand_total_price").innerText = grandTotalPrice
-                    // hiden the cupon area
-                    const cuponArea = document.getElementById("cupon_area")
-                    cuponArea.classList.add("hidden")
-                }
-                else {
-                    alert("plase type rigt cupon")
-                    return;
-                }
-            })
-
-
+            applyCuponBtn.removeAttribute("disabled")
+        }
+        else if (count > 4) {
             alert("plase only for your 4 seats")
             return
-        }
-        else if (addedTitalItem.length >= 3) {
-            document.getElementById("apply_cupon").removeAttribute("disabled")
         }
         // start only 4 element selected
         let targetSeatText = event.target.innerText
         event.target.classList.add("bg-green-700")
         event.target.setAttribute("disabled", "text-red-700")
-        // console.log(event.target)
+
+
 
         const totalSeatText = document.getElementById("total_seat").innerText
         const totalSeatNumber = parseInt(totalSeatText)
@@ -98,6 +65,46 @@ for (let btn of priemBtns) {
     })
 }
 
+// calculatDiscount
+function calculatDicount() {
+    const applyCupponText = document.getElementById("apply_cuppon_text").value
+    if (applyCupponText === "NEW15") {
+        let grandTotalPriceText = document.getElementById("grand_total_price").innerText
+        let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 15) / 100
+        document.getElementById("grand_total_price").innerText = grandTotalPrice
+        // hiden the cupon area
+        const cuponArea = document.getElementById("cupon_area")
+        cuponArea.classList.add("hidden")
+    }
+    else if (applyCupponText === "Couple 20") {
+        let grandTotalPriceText = document.getElementById("grand_total_price").innerText
+        let grandTotalPrice = parseInt(grandTotalPriceText) - (parseInt(grandTotalPriceText) * 20) / 100
+        document.getElementById("grand_total_price").innerText = grandTotalPrice
+        // hiden the cupon area
+        const cuponArea = document.getElementById("cupon_area")
+        cuponArea.classList.add("hidden")
+    }
+    else {
+        alert("plase type rigt cupon")
+        return;
+    }
+}
+
+
+// success
+document.getElementById("phone_number").addEventListener("keyup", function (event) {
+    if (count > 0 && event.key) {
+        document.getElementById("next").removeAttribute("disabled")
+        document.getElementById("next").addEventListener("click", function () {
+            const success = document.getElementById("success")
+            success.classList.remove("hidden")
+            const bookingSection = document.getElementById("bookin_section")
+            bookingSection.classList.add("hidden")
+            console.log("click")
+        })
+    }
+})
+// console.log(inputArray)
 
 // set inner text
 function setInnerText(id, value) {
